@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace RunnerGame
 {
@@ -6,7 +7,10 @@ namespace RunnerGame
     {
         public static GameController instance;
         public int score = 0;
-        public bool isMove = true;
+        public bool isMove = false;
+        public GameObject startPanel;
+
+        public Text scoreText;
 
         private void Start()
         {
@@ -14,6 +18,17 @@ namespace RunnerGame
             {
                 instance = this;
             }
+        }
+
+        public void UpdateScore(int value)
+        {
+            score += value;
+            scoreText.text = score.ToString();
+        }
+        public void PlayGame()
+        {
+            isMove = true;
+            startPanel.SetActive(false);
         }
     }
 }
